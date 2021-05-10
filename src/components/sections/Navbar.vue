@@ -30,10 +30,10 @@
       </v-list-item>
       <v-row class="d-flex text-center mx-3 ">
         <v-col cols="12">
-          <v-btn class="lime darken-1" block :to="{name: 'Home'}">Home</v-btn>
+          <v-btn class="green accent-2" block :to="{name: 'Home'}">Home</v-btn>
            </v-col>
            <v-col cols="12">
-          <v-btn class="lime darken-1" block :to="{name: 'Posts'}">Posts</v-btn>
+          <v-btn class="green accent-2" block :to="{name: 'Posts'}">Posts</v-btn>
         </v-col>
       </v-row>
     </v-navigation-drawer>
