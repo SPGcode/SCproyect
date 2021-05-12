@@ -21,8 +21,6 @@ const actions = {
         .then((data) => {
             commit('setPosts', data)
         });
-        
-        
     }
 }
 
