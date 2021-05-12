@@ -7,7 +7,7 @@
       <v-spacer></v-spacer>
 
       <router-link
-        to="/about"
+        to="/newuser"
         class="white--text mr-5"
         style="text-decoration: none"
       >
