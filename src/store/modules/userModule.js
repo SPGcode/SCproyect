@@ -23,10 +23,10 @@ const mutations = {
 
 const actions = {
     getNewUser({commit}, newUser){
-        auth.createUserWithEmailAndPassword(newUser.mail, newUser.password)
+        auth.createUserWithEmailAndPassword(newUser.email, newUser.password)
         .then(res =>{
             const resUser = {
-                mail: res.user.mail,
+                email: res.user.email,
                 uid: res.user.uid
             }
             commit('setNewUser', resUser)

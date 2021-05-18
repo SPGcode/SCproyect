@@ -8,11 +8,11 @@
             <v-row justify="center">
               <v-col class="ml-5" cols="12" md="6">
                 <v-form
-                @submit.prevent="getNewUser({mail: mail, password: password})"
+                @submit.prevent="getNewUser({email: email, password: password})"
                 >
                   <v-text-field
-                    v-model="mail"
-                    label="Mail"
+                    v-model="email"
+                    label="email"
                     required
                   ></v-text-field>
                   <v-text-field
@@ -39,7 +39,7 @@
                       </v-btn>
                     </v-col>
                   </v-row>
-                  <error> {{error}} </error>
+                  <error :v-if="error"> {{error}} </error>
                 </v-form>
               </v-col>
             </v-row>
@@ -53,10 +53,9 @@
 import { mapState, mapActions } from 'vuex';
 
 export default {
-  name: "Newuser",
   data() {
     return {
-        mail: "",
+        email: "",
         password: "",
         password2: ""
       
@@ -65,7 +64,7 @@ export default {
   computed: {
     ...mapState('userModule', ['error']),
     block() {
-      if (!this.mail.includes("@")) {
+      if (!this.email.includes("@")) {
         return true;
       }
       if (this.password.length > 5 && this.password === this.password2) {
@@ -78,12 +77,12 @@ export default {
   methods: {
       ...mapActions('userModule', ['getNewUser']),
     clean() {
-      this.mail = "";
+      this.email = "";
       this.password = "";
       this.password2 = "";
     },
-    formProccess({mail: mail, password: password}){
-        this.getNewUser({mail: mail, password: password})
+    formProccess({email: email, password: password}){
+        this.getNewUser({email: email, password: password})
         this.clean();
     }
   },

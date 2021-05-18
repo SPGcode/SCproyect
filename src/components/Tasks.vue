@@ -2,7 +2,7 @@
     <div>
        <v-container>
            <v-row class="d-flex justify-space-between" >
-               <v-col xs="12" sm="6" v-for="(item, index) in allPosts" :key="index">
+               <v-col cols="12" sm="4" v-for="(item, index) in allPosts" :key="index">
                     <v-card
                         elevation="5"
                     >
@@ -14,12 +14,12 @@
                         <p> {{item.text}} </p>
                        </v-card-text>
                        <v-card-actions>
-                           <v-row class="d-flex text-center mx-3">
+                           <v-row class="d-flex text-center mx-3" dark>
                                <v-col cols="6">
-                                  <v-btn block class="green accent-2">Hola</v-btn>
+                                  <v-btn block class="indigo darken-4">Hola</v-btn>
                                 </v-col>
                                 <v-col>
-                                    <v-btn block class="green accent-2">Adiós</v-btn> 
+                                    <v-btn block class="indigo darken-4">Adiós</v-btn> 
                                 </v-col>
                            </v-row>
                        </v-card-actions>
