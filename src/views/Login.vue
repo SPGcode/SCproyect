@@ -8,7 +8,7 @@
             <v-row justify="center">
               <v-col class="ml-5" cols="12" md="6">
                 <v-form
-                @submit.prevent="getNewUser({mail: mail, password: password})"
+                @submit.prevent="logInUser({mail: mail, password: password})"
                 >
                   <v-text-field
                     v-model="mail"
@@ -19,12 +19,6 @@
                     type="password"
                     v-model="password"
                     label="Password"
-                    required
-                  ></v-text-field>
-                  <v-text-field
-                    type="password"
-                    v-model="password2"
-                    label="Repeat password"
                     required
                   ></v-text-field>
                   <v-row class="d-flex justify-space-between">
@@ -49,49 +43,39 @@
     </v-main>
   </div>
 </template>
+
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions} from 'vuex'
 
 export default {
-  name: "Newuser",
-  data() {
-    return {
-        mail: "",
-        password: "",
-        password2: ""
-      
-    }
-  },
-  computed: {
-    ...mapState('userModule', ['error']),
-    block() {
+    name: 'Login',
+    data() {
+        return {
+            mail: "",
+            password: ""
+        }
+    },
+    computed: {
+            ...mapState('userModule', ['userLogIn', 'error']),
+
+            block() {
       if (!this.mail.includes("@")) {
         return true;
       }
-      if (this.password.length > 5 && this.password === this.password2) {
+      if (this.password.length > 5) {
         return false;
         }else{
         return true;
       }
     }
-  },
-  methods: {
-      ...mapActions('userModule', ['getNewUser']),
-    clean() {
-      this.mail = "";
-      this.password = "";
-      this.password2 = "";
     },
-    formProccess({mail: mail, password: password}){
-        this.getNewUser({mail: mail, password: password})
-        this.clean();
+    methods:{
+        ...mapActions('userModule', ['logInUser']),
+
+        clean() {
+        this.mail = "";
+        this.password = "";
+        }
     }
-  },
-};
-</script>
-<style>
-v-btn {
-  width: 50px;
-  height: 50px;
 }
-</style>
+</script>

@@ -3,7 +3,8 @@ import router from '../../router'
 
 const state = () => ({
     user: null,
-    error: null
+    error: null,
+    userLogIn: null
 })
 
 const getters = {
@@ -16,6 +17,9 @@ const mutations = {
     },
     setError(state, result){
         state.error = result
+    },
+    setLogIn(state, result){
+        state.userLogIn = result
     }
 }
 
@@ -36,6 +40,21 @@ const actions = {
             commit('setError', err.message)
         })
         
+    },
+
+    logInUser({commit}, user){
+            auth.signInWithEmailAndPassword(user.mail, user.password)
+            .then(res => {
+                const resUserLogIn = {
+                    mail: res.user.mail,
+                    uid: res.user.uid
+                }
+                commit('setLogIn', resUserLogIn)
+                router.push('/')
+            })
+            .catch (err => {
+            commit('setError', err.message)
+        })
     }
 }
 
