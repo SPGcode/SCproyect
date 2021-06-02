@@ -43,8 +43,9 @@ export default {
   computed:{
     ...mapState('userModule', ['user'])
   }
-};
+}
 </script>
+
 
 <style scoped>
 </style>

@@ -6,16 +6,21 @@
     <v-main>
       <router-view/>
     </v-main>
+    <v-container>
+      <Footer />
+    </v-container>
   </v-app>
 </template>
 
 <script>
 import Navbar from './components/sections/Navbar'
+import Footer from './components/sections/Footer'
 
 export default {
   name: "App",
   components:{
-    Navbar
+    Navbar,
+    Footer
   },
   data: () => ({
     

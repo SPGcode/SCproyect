@@ -43,10 +43,10 @@ const actions = {
     },
 
     logInUser({commit}, user){
-            auth.signInWithEmailAndPassword(user.mail, user.password)
+            auth.signInWithEmailAndPassword(user.email, user.password)
             .then(res => {
                 const resUserLogIn = {
-                    mail: res.user.mail,
+                    email: res.user.email,
                     uid: res.user.uid
                 }
                 commit('setLogIn', resUserLogIn)
@@ -55,6 +55,17 @@ const actions = {
             .catch (err => {
             commit('setError', err.message)
         })
+    },
+
+    closeSesion(){
+        auth.signOut().
+        then(()=> {
+            router.push('/login')
+        })
+    },
+
+    userCurrent({commit}, user){
+        commit('setNewUser', user)
     }
 }
 

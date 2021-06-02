@@ -8,11 +8,11 @@
             <v-row justify="center">
               <v-col class="ml-5" cols="12" md="6">
                 <v-form
-                @submit.prevent="logInUser({mail: mail, password: password})"
+                @submit.prevent="logInUser({email: email, password: password})"
                 >
                   <v-text-field
-                    v-model="mail"
-                    label="Mail"
+                    v-model="email"
+                    label="email"
                     required
                   ></v-text-field>
                   <v-text-field
@@ -51,7 +51,7 @@ export default {
     name: 'Login',
     data() {
         return {
-            mail: "",
+            email: "",
             password: ""
         }
     },
@@ -59,7 +59,7 @@ export default {
             ...mapState('userModule', ['userLogIn', 'error']),
 
             block() {
-      if (!this.mail.includes("@")) {
+      if (!this.email.includes("@")) {
         return true;
       }
       if (this.password.length > 5) {
@@ -73,7 +73,7 @@ export default {
         ...mapActions('userModule', ['logInUser']),
 
         clean() {
-        this.mail = "";
+        this.email = "";
         this.password = "";
         }
     }

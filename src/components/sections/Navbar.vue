@@ -2,15 +2,12 @@
   <div>
     <v-toolbar dense class="app-bar text-justify-center indigo darken-4" dark>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-row class="d-flex text-center">
-        <v-col cols="12">
+      <v-row class="d-flex text-center" wrap>
+        <v-col cols="6">
           <v-toolbar-title>{{ title }}</v-toolbar-title>
-
           <v-spacer></v-spacer>
         </v-col>
-      </v-row>
-      <v-row class="d-flex text-center">
-        <v-col cols="12">
+        <v-col cols="6">
           <router-link
             to="/login"
             class="white--text mr-5"
@@ -25,13 +22,11 @@
           >
             <span>Sign up</span>
           </router-link>
-          <router-link
-            to="/"
+          <v-btn
+            @click="closeSesion"
             class="white--text ml-5"
             style="text-decoration: none"
-          >
-            <span>Log out</span>
-          </router-link>
+          >Log out</v-btn>
         </v-col>
       </v-row>
     </v-toolbar>
@@ -65,6 +60,8 @@
   </div>
 </template>
 <script>
+import {mapActions} from 'vuex'
+
 export default {
   name: "Navbar",
   data() {
@@ -73,6 +70,9 @@ export default {
       drawer: false,
     };
   },
+  methods: {
+    ...mapActions('userModule', ['closeSesion'])
+  }
 };
 </script>
 <style scoped>
